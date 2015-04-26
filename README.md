@@ -1,5 +1,5 @@
 # Css Butterflies
-Some animated butterflies on pure CSS.
+Animated butterflies via pure CSS.
 
 ## License
 MIT, 2015
