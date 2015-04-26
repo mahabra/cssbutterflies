@@ -1,0 +1,373 @@
+
+@keyframes swingLeft {
+    from {
+    	transform: rotate3d(0,1,0,-54deg);
+    }
+    to {
+    	transform: rotate3d(0,1,0,54deg);
+    }
+}
+
+@keyframes swingRight {
+    from {
+    	transform: rotate3d(0,1,0,54deg);
+    }
+    to {
+    	transform: rotate3d(0,1,0,-54deg);
+    }
+}
+
+@keyframes fly {
+	0% {
+		transform: perspective(750px) scale(2.4) rotate3d(1, -1, 0, 120deg) translate3d(-100px,50px,0px);
+		opacity:1;
+	}
+	
+	100% {
+		transform: perspective(750px) scale(2.4) rotate3d(1, 1, 0, 75deg) translate3d(150px,-40px,-25px);
+		opacity:1;
+	}
+}
+
+@keyframes fly-agressive {
+	0% {
+		transform: perspective(750px) scale(2.4) rotate3d(1, -1, 0, 120deg) translate3d(-100px,50px,0px);
+		opacity:1;
+	}
+}
+
+@keyframes fly-agressive2 {
+	0% {
+		transform: perspective(750px) scale(2.4) rotate3d(1, 1, 0, 75deg) translate3d(150px,-40px,-25px);
+		opacity:1;
+	}
+}
+
+@keyframes fly-shadows {
+	0% {
+		opacity:1;
+		transform: perspective(750px) scale(5) rotate3d(1, -1, 0, 75deg) translate3d(-100px,50px,70px)
+	}
+	
+	100% {
+		opacity:1;
+		transform: perspective(750px) scale(3) rotate3d(1, 1, 0, 75deg) translate3d(60px,-0px,64px)
+	}
+}
+
+@keyframes wings-color {
+	0% {
+		background-color:#faf8d1;
+	}
+
+	60% {
+		background-color:rgba(43, 13, 0, 0.66);
+	}
+
+	80% {
+		background-color:#e1ce67;
+	}
+	
+	100% {
+		background-color:#eae6d9;
+	}
+}
+
+@keyframes wings-color-shadow {
+	0% {
+		background-color:#000;
+	}
+	
+	100% {
+		background-color:#000;
+	}
+}
+
+.brahma-butterfly-wing-item() {
+	content:""; 
+	display:block;
+	background-color:rgba(255, 145, 96, 0.94);
+	border-radius:5px;
+	position:absolute;
+
+	animation-name: wings-color;
+	animation-delay: 4s;
+	animation-easing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+   
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    /* Вариации полета на основе одной анимации */
+}
+
+.butterflies {
+	position:absolute;
+	
+	>div {
+		width:22px;
+		height:20px;
+		position:absolute;
+
+		transform-style: preserve-3d; 
+
+		/*transition:transform 1s ease;*/
+		opacity:0;
+		transform: perspective(750px) scale(5) rotate3d(1, -1, 0, 75deg) translate3d(-100px,50px,70px); 
+		animation-name: fly;
+		animation-easing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	    animation-duration: 4s;
+	    animation-delay: 4s;
+	    animation-iteration-count: infinite;
+	    animation-direction: alternate;
+	    animation-fill-mode: initial;
+
+		&:nth-child(odd) { animation-direction:alternate-reverse; } 
+
+		/*&:nth-child(odd) >:nth-child(1), &:nth-child(odd) >:nth-child(2) { 
+			animation-duration:80ms; 
+			:before {
+				background-color:rgb(255, 213, 135) !important;
+			}
+		} 
+		&:nth-child(4n-7) >:nth-child(1), &:nth-child(odd) >:nth-child(2) { animation-duration:110ms; } 
+		&:nth-child(3n-5) >:nth-child(1), &:nth-child(odd) >:nth-child(2) { animation-duration:125ms; } */
+
+		/* Left wing */
+		>:nth-child(1)  {
+			.brahma-butterfly-wing;
+			top:0px;
+			left:0px;
+
+			
+		  	-webkit-transform-origin: 100% 0;
+		  	-ms-transform-origin: 100% 0;
+		  	transform-origin: 100% 0;
+
+			animation-name: swingLeft;
+			animation-easing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		    animation-duration: 100ms;
+		    animation-iteration-count: infinite;
+		    animation-direction: alternate;
+		    &:before {
+		    	.brahma-butterfly-wing-item;
+		    	top:0px;
+		    	right:0px;
+		    	width:10px;
+		    	height:10px;
+		    }
+		    &:after {
+		    	.brahma-butterfly-wing-item;
+		    	top:8px;
+		    	right:0px;
+		    	width:6px;
+		    	height:6px;
+		    	
+		    }
+		}
+
+		/* Right wing */
+		>:nth-child(2) {
+			.brahma-butterfly-wing;
+			top:0px;
+			right:0px;
+
+			-webkit-transform-origin: 0 0;
+		  	-ms-transform-origin: 0 0;
+		  	transform-origin: 0 0;
+
+		  	animation-name: swingRight;
+			animation-easing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		    animation-duration: 100ms;
+		    animation-iteration-count: infinite;
+		    animation-direction: alternate;
+
+		    &:before {
+		    	.brahma-butterfly-wing-item;
+		    	top:0px;
+		    	left:0px;
+		    	width:10px;
+		    	height:10px;
+		    	
+		    }
+		    &:after {
+		    	.brahma-butterfly-wing-item;
+		    	top:8px;
+		    	left:0px;
+		    	width:6px;
+		    	height:6px;
+
+		    }
+		}
+
+		>:nth-child(3) {
+			height:12px;
+			width:2px;
+			position:absolute;
+			left:10px;
+			top:0px;
+			margin:0;
+			border-radius:2px;
+			&:before {
+				content:"";
+				top:0px;
+				left:0px;
+				width:2px;
+				height:4px;
+				position:absolute;
+				top:0px;
+				left:0px;
+				background-color:#040000;
+			}
+			&:after {
+				content:"";
+				top:0px;
+				left:0px;
+				width:2px;
+				height:5px;
+				position:absolute;
+				top:5px;
+				left:0;
+				background-color:#4e0c00;
+			}
+		}
+
+		/* Индивидуальные настройки полета для первой бабочки */
+		&:nth-child(1) { 
+			top:43px; animation-duration: 3.3s; animation-easing-function:cubic-bezier(0.785, 0.135, 0.15, 0.86); 
+			>*:before {
+				animation-duration: 3.3s;
+				animation-easing-function:cubic-bezier(0.785, 0.135, 0.15, 0.86); 
+			}
+			>*:after {
+				animation-duration: 3.3s;
+				animation-easing-function:cubic-bezier(0.785, 0.135, 0.15, 0.86); 
+			}
+		} 
+
+		/* Индивидуальные настройки полета для второй бабочки */
+		&:nth-child(2) { 
+			top:-12px; animation-duration: 2.7s; animation-easing-function:cubic-bezier(0.55, 0.055, 0.675, 0.19); 
+			>*:before {
+				animation-duration: 2.7s;
+				animation-easing-function:cubic-bezier(0.55, 0.055, 0.675, 0.19); 
+			}
+			>*:after {
+				animation-duration: 2.7s;
+				animation-easing-function:cubic-bezier(0.55, 0.055, 0.675, 0.19); 
+			}
+		} 
+
+		&:nth-child(3) { 
+			opacity:0;
+			animation-name:fly-agressive;
+			animation-iteration-count:1;
+			animation-delay:1s;
+			animation-direction:reverse;
+			top:-12px;  animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			>*:before {
+				animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			}
+			>*:after {
+				animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			} 
+		} 
+
+		&:nth-child(4) { 
+			opacity:0;
+			animation-name:fly-agressive2;
+			animation-iteration-count:1;
+			animation-delay:1s;
+			animation-direction:reverse;
+			top:43px;  animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			>*:before {
+				animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			}
+			>*:after {
+				animation-duration: 3s; animation-easing-function:cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+			} 
+		}
+
+		.coord() {
+			display:none;
+			width:50px;
+			height:50px;
+			border-radius:25px;
+			border:1px black solid;
+
+			position:absolute;
+			margin:0;
+
+			top: -20px;
+	  		left: -15px;
+
+	  		-webkit-transform-origin-y: 50%;
+		  	-webkit-transform-origin-x: 50%;
+		  	-webkit-transform-origin-z: 50%;
+
+		  	-ms-transform-origin-y: 50%;
+		  	-ms-transform-origin-x: 50%;
+		  	-ms-transform-origin-z: 50%;
+
+		  	transform-origin-y: 50%;
+		  	transform-origin-x: 50%;
+		  	transform-origin-z: 50%;
+		}
+
+		.xcoord {
+			.coord;
+		}
+
+		.ycoord {
+			.coord;
+			 transform: rotateX(90deg);
+			 border-color:red;
+		}
+
+		.xcoord {
+			.coord;
+		}
+	}
+
+	&.butterflies-shadows {
+		>div {
+			animation-name: fly-shadows;
+			>* {
+				&:before {
+					background-color:#000;
+					-webkit-box-shadow: 6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					-moz-box-shadow:    6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					box-shadow:         6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					animation-name:wings-color-shadow !important;
+				}
+				&:after {
+					background-color:#000;
+					-webkit-box-shadow: 6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					-moz-box-shadow:    6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					box-shadow:         6px -8px 17px 0px rgba(0, 0, 0, 0.48);
+					animation-name:wings-color-shadow !important;
+				}
+			}
+
+			/* Correct shadow position */
+			&:nth-child(1) { 
+				left:130px;
+			}
+
+			/* Correct shadow position */
+			&:nth-child(2) { 
+				left:130px;
+			}
+		}
+    }
+}
+
+.brahma-butterfly-wing() {
+	position:absolute;
+	width:10px;
+	height:20px;
+	
+	margin:0;
+}
+
+
+

@@ -1,0 +1,13 @@
+{
+  "name": "butterflies.dev",
+  "version": "0.0.0",
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "grunt-banner": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-image-embed": "^0.3.3",
+    "grunt-snipper": "latest"
+  }
+}

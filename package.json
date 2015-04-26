@@ -1,0 +1,11 @@
+{
+  "name": "butterflies",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Vladimir Kalmykov (@morulus)",
+      "email": "vladimirmorulus@gmail.com"
+    }
+  ],
+  "description": "Pure CSS butterflies",
+}
